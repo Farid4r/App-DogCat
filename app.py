@@ -9,7 +9,7 @@ from PIL import Image
 model = tf.keras.models.load_model("model_cat_dog.keras")
 
 st.set_page_config(
-    page_title="Klasifikasi Kucing & Anjing",
+    page_title="CatDog Classifier",
     layout="centered"
 )
 
