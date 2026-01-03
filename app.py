@@ -33,14 +33,17 @@ if uploaded_file is not None:
     # Prediksi
     result = model.predict(img_array)[0][0]
 
-    if result < 0.5:
-        prediction = "Kucing"
-        confidence = (1 - result) * 100
-    else:
-        prediction = "Anjing"
-        confidence = result * 100
+if result < 0.5:
+    prediction = "Kucing"
+    confidence = (1 - result) * 100
+else:
+    prediction = "Anjing"
+    confidence = result * 100
 
-    confidence = round(confidence, 2)
+confidence = round(confidence, 2)
 
+if confidence < THRESHOLD:
+    st.warning("Gambar tersebut bukan kucing maupun anjing.")
+else:
     st.success(f"Hasil Prediksi: {prediction}")
     st.write(f"Tingkat Keyakinan Model: {confidence}%")
